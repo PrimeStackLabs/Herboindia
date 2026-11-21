@@ -1,8 +1,8 @@
 Add-Type -AssemblyName System.Drawing
 
-$srcPath = "d:\Herbo India\public\assets\logo.jpg"
+$srcPath = "C:\Users\fredo\.gemini\antigravity\brain\8898fc97-e091-4f8d-bc2f-d9568c4eb8a5\.user_uploaded\media_1793700843720_931c46a4.jpg"
 if (-not (Test-Path $srcPath)) {
-    $srcPath = "C:\Users\fredo\.gemini\antigravity\brain\8898fc97-e091-4f8d-bc2f-d9568c4eb8a5\.user_uploaded\media_1793700843720_931c46a4.jpg"
+    $srcPath = "d:\Herbo India\frontend\assets\logo.jpg"
 }
 
 $bmp = [System.Drawing.Bitmap]::FromFile($srcPath)
@@ -100,11 +100,11 @@ $destCropRect = New-Object System.Drawing.Rectangle(0, 0, $cropW, $cropH)
 $g.DrawImage($outBmp, $destCropRect, $srcCropRect, [System.Drawing.GraphicsUnit]::Pixel)
 
 # Save transparent PNG
-$tightBmp.Save("d:\Herbo India\public\assets\logo.png", [System.Drawing.Imaging.ImageFormat]::Png)
-$tightBmp.Save("d:\Herbo India\public\assets\logo-transparent.png", [System.Drawing.Imaging.ImageFormat]::Png)
+$tightBmp.Save("d:\Herbo India\frontend\assets\logo.png", [System.Drawing.Imaging.ImageFormat]::Png)
+$tightBmp.Save("d:\Herbo India\frontend\assets\logo-transparent.png", [System.Drawing.Imaging.ImageFormat]::Png)
 
 $g.Dispose()
 $tightBmp.Dispose()
 $outBmp.Dispose()
 
-Write-Host "Successfully saved transparent logo to public\assets\logo.png!"
+Write-Host "Successfully saved transparent logo to frontend\assets\logo.png!"

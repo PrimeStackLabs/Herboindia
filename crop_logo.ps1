@@ -2,7 +2,7 @@ Add-Type -AssemblyName System.Drawing
 
 $srcPath = "C:\Users\fredo\.gemini\antigravity\brain\8898fc97-e091-4f8d-bc2f-d9568c4eb8a5\.user_uploaded\media_1793700843720_931c46a4.jpg"
 if (-not (Test-Path $srcPath)) {
-    $srcPath = "d:\Herbo India\public\assets\logo.jpg"
+    $srcPath = "d:\Herbo India\frontend\assets\logo.jpg"
 }
 
 $orig = [System.Drawing.Image]::FromFile($srcPath)
@@ -32,12 +32,13 @@ $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::HighQuality
 $destRect = New-Object System.Drawing.Rectangle(0, 0, $cropW, $cropH)
 $g.DrawImage($orig, $destRect, $cropRect, [System.Drawing.GraphicsUnit]::Pixel)
 
-$targetBmp.Save("d:\Herbo India\public\assets\logo.jpg", [System.Drawing.Imaging.ImageFormat]::Jpeg)
-$targetBmp.Save("d:\Herbo India\public\assets\logo.png", [System.Drawing.Imaging.ImageFormat]::Png)
-$targetBmp.Save("d:\Herbo India\public\assets\logo-tight.jpg", [System.Drawing.Imaging.ImageFormat]::Jpeg)
+$targetBmp.Save("d:\Herbo India\frontend\assets\logo.jpg", [System.Drawing.Imaging.ImageFormat]::Jpeg)
+$targetBmp.Save("d:\Herbo India\frontend\assets\logo.png", [System.Drawing.Imaging.ImageFormat]::Png)
+$targetBmp.Save("d:\Herbo India\frontend\assets\logo-tight.jpg", [System.Drawing.Imaging.ImageFormat]::Jpeg)
+$targetBmp.Save("d:\Herbo India\frontend\assets\herbo-logo-gold.jpg", [System.Drawing.Imaging.ImageFormat]::Jpeg)
 
 $g.Dispose()
 $targetBmp.Dispose()
 $orig.Dispose()
 
-Write-Host "Successfully cropped logo to $cropW x $cropH and saved to public\assets\logo.jpg!"
+Write-Host "Successfully cropped logo to $cropW x $cropH and saved to frontend\assets\logo.jpg!"

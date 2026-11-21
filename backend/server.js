@@ -1176,7 +1176,17 @@ const server = http.createServer(async (req, res) => {
   // ==================== 4. STATIC FILE SERVING (FALLBACK / MONOLITH) ====================
 
   // Direct route for Official Gold Emblem Logo
-  if (pathname === '/assets/logo.png' || pathname === '/assets/logo.jpg' || pathname === '/assets/herbo-logo-gold.jpg') {
+  if (pathname === '/assets/logo.png' || pathname === '/assets/logo-transparent.png') {
+    const logoPath = path.join(PUBLIC_DIR, 'assets', 'logo.png');
+    if (fs.existsSync(logoPath)) {
+      res.writeHead(200, {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'no-cache'
+      });
+      fs.createReadStream(logoPath).pipe(res);
+      return;
+    }
+  } else if (pathname === '/assets/logo.jpg' || pathname === '/assets/herbo-logo-gold.jpg' || pathname === '/assets/logo-tight.jpg') {
     const logoPath = path.join(PUBLIC_DIR, 'assets', 'logo.jpg');
     if (fs.existsSync(logoPath)) {
       res.writeHead(200, {
@@ -1184,6 +1194,13 @@ const server = http.createServer(async (req, res) => {
         'Cache-Control': 'no-cache'
       });
       fs.createReadStream(logoPath).pipe(res);
+      return;
+    }
+  } else if (pathname === '/assets/favicon.png' || pathname === '/favicon.ico' || pathname === '/assets/favicon.ico') {
+    const favPath = path.join(PUBLIC_DIR, 'assets', 'favicon.png');
+    if (fs.existsSync(favPath)) {
+      res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=86400' });
+      fs.createReadStream(favPath).pipe(res);
       return;
     }
   }
