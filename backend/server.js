@@ -30,6 +30,10 @@ const ADMIN_USERNAME = (process.env.ADMIN_USERNAME || 'admin').toLowerCase().tri
 const ADMIN_DEFAULT_PASSWORD = process.env.ADMIN_DEFAULT_PASSWORD || 'HerboIndia@2026!';
 const ADMIN_DOCTOR_NAME = process.env.ADMIN_DOCTOR_NAME || 'Chief Medical Administrator';
 
+// Allowed Client / Frontend URLs for CORS (Configurable via CLIENT_URL or FRONTEND_URL env)
+const CLIENT_URL = process.env.CLIENT_URL || process.env.FRONTEND_URL || '*';
+const allowedOrigins = CLIENT_URL.split(',').map(s => s.trim().replace(/\/$/, '')).filter(Boolean);
+
 const FRONTEND_DIR = path.join(__dirname, '..', 'frontend');
 const PUBLIC_DIR = fs.existsSync(FRONTEND_DIR) ? FRONTEND_DIR : path.join(__dirname, 'public');
 const DATA_DIR = path.join(__dirname, 'data');
@@ -705,7 +709,17 @@ async function sendOtpEmail(email, otp) {
 // ==================== REST API & HTTP SERVER ====================
 
 const server = http.createServer(async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const requestOrigin = req.headers['origin'];
+  if (allowedOrigins.includes('*') || !requestOrigin) {
+    res.setHeader('Access-Control-Allow-Origin', requestOrigin || '*');
+  } else if (allowedOrigins.includes(requestOrigin)) {
+    res.setHeader('Access-Control-Allow-Origin', requestOrigin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  } else if (requestOrigin && (requestOrigin.startsWith('http://localhost') || requestOrigin.startsWith('http://127.0.0.1'))) {
+    res.setHeader('Access-Control-Allow-Origin', requestOrigin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigins[0] || '*');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
@@ -1245,6 +1259,7 @@ server.listen(PORT, async () => {
   console.log(`🌿 Herbo India Platform running at http://localhost:${PORT}`);
   console.log(`🛡️ Master Doctor & Admin Portal: http://localhost:${PORT}/admin`);
   console.log(`📧 Master Admin Email: ${ADMIN_EMAIL}`);
+  console.log(`🌐 Allowed Client URL(s): ${CLIENT_URL}`);
   console.log(`📞 Helpline Phone & WhatsApp: 9920086376`);
   console.log(`=======================================================`);
   await initMongoDB();

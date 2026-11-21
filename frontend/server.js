@@ -1,10 +1,12 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
 const PORT = process.env.PORT || 5173;
 const BASE_DIR = __dirname;
+const BACKEND_URL = (process.env.VITE_API_URL || process.env.BACKEND_URL || 'http://127.0.0.1:3000').trim().replace(/\/$/, '');
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -26,36 +28,54 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   let pathname = decodeURIComponent(parsedUrl.pathname);
 
-  // Transparent reverse-proxy for API requests to backend server (port 3000)
-  if (pathname.startsWith('/api/')) {
-    const proxyReq = http.request({
-      hostname: '127.0.0.1',
-      port: 3000,
-      path: req.url,
-      method: req.method,
-      headers: {
-        ...req.headers,
-        host: '127.0.0.1:3000'
-      }
-    }, (proxyRes) => {
-      res.writeHead(proxyRes.statusCode, proxyRes.headers);
-      proxyRes.pipe(res);
+  // Dynamic /config.js injection if VITE_API_URL is supplied via process.env
+  if ((pathname === '/config.js' || pathname === '/js/config.js') && process.env.VITE_API_URL) {
+    const envApiUrl = process.env.VITE_API_URL.trim().replace(/\/$/, '');
+    res.writeHead(200, {
+      'Content-Type': 'text/javascript; charset=utf-8',
+      'Access-Control-Allow-Origin': '*'
     });
-
-    proxyReq.on('error', (err) => {
-      res.writeHead(502, {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      });
-      res.end(JSON.stringify({
-        success: false,
-        error: 'Backend API Offline',
-        message: 'Could not connect to backend server on port 3000. Start backend using: cd backend && npm start'
-      }));
-    });
-
-    req.pipe(proxyReq);
+    res.end(`window.VITE_API_URL = ${JSON.stringify(envApiUrl)};\nwindow.__API_BASE__ = window.VITE_API_URL;\n`);
     return;
+  }
+
+  // Transparent reverse-proxy for API requests to backend server (Render or local port 3000)
+  if (pathname.startsWith('/api/')) {
+    try {
+      const targetUrl = new URL(req.url, BACKEND_URL);
+      const transport = targetUrl.protocol === 'https:' ? https : http;
+      const proxyReq = transport.request({
+        protocol: targetUrl.protocol,
+        hostname: targetUrl.hostname,
+        port: targetUrl.port || (targetUrl.protocol === 'https:' ? 443 : 80),
+        path: targetUrl.pathname + (targetUrl.search || ''),
+        method: req.method,
+        headers: {
+          ...req.headers,
+          host: targetUrl.host
+        }
+      }, (proxyRes) => {
+        res.writeHead(proxyRes.statusCode, proxyRes.headers);
+        proxyRes.pipe(res);
+      });
+
+      proxyReq.on('error', (err) => {
+        res.writeHead(502, {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        });
+        res.end(JSON.stringify({
+          success: false,
+          error: 'Backend API Offline',
+          message: `Could not connect to backend at ${BACKEND_URL}. Ensure your backend server is running or configure VITE_API_URL.`
+        }));
+      });
+
+      req.pipe(proxyReq);
+      return;
+    } catch (e) {
+      // Fall through to local handling
+    }
   }
 
   // Default routes

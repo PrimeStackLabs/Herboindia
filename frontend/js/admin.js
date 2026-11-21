@@ -9,13 +9,14 @@ let activeCategoryTab = "ALL";
 let syncTimerId = null;
 let lastSyncTimestamp = Date.now();
 
-// Intelligent API base for separate client dev server (localhost:5173), direct monolith (localhost:3000), or file:// execution
-const API_BASE = (typeof window !== 'undefined' && window.__API_BASE__)
-  || (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+// Intelligent API base: Render URL (VITE_API_URL), client dev server (5173), direct monolith (3000), or file:// execution
+const API_BASE = (typeof window !== 'undefined' && (window.VITE_API_URL || window.__API_BASE__))
+  ? String(window.VITE_API_URL || window.__API_BASE__).trim().replace(/\/$/, '')
+  : ((typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
       ? (window.location.port === '3000' ? '' : 'http://localhost:3000')
-      : (typeof window !== 'undefined' && window.location.protocol === 'file:')
-        ? 'http://localhost:3000'
-        : '');
+      : ((typeof window !== 'undefined' && window.location.protocol === 'file:')
+          ? 'http://localhost:3000'
+          : ''));
 
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthStatus();

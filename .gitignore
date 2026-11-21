@@ -3,8 +3,11 @@
 .env.local
 .env.*.local
 backend/.env
+frontend/.env
 **/.env
-**/.env.*
+**/.env.local
+**/.env.*.local
+!**/.env.example
 
 # Dependency directories
 node_modules/

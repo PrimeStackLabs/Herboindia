@@ -97,12 +97,43 @@ npm run backend    # Starts only the backend server (Port 3000)
 
 ---
 
+## 🌐 Cloud Deployment (Render + Frontend)
+
+### 1. Deploy Backend to Render:
+- **Build Command**: `cd backend && npm install`
+- **Start Command**: `cd backend && npm start`
+- **Environment Variables on Render**:
+  - `PORT`: `3000` (or leave default, Render sets this automatically)
+  - `NODE_ENV`: `production`
+  - `MONGODB_URI`: `mongodb+srv://...`
+  - `DB_NAME`: `herboindia`
+  - `CLIENT_URL`: `https://your-frontend-domain.vercel.app,http://localhost:5173` *(Allowed frontend domains for CORS)*
+  - `ADMIN_EMAIL`: `herboindia03@gmail.com`
+  - `ADMIN_USERNAME`: `admin`
+  - `ADMIN_DEFAULT_PASSWORD`: `HerboIndia@2026!`
+
+### 2. Connect Frontend to Render Backend:
+You can connect the frontend to your live Render backend in either of two easy ways:
+
+- **Method A (No build step needed)**: Open `frontend/config.js` and set:
+  ```javascript
+  window.VITE_API_URL = "https://your-backend-app.onrender.com";
+  ```
+- **Method B (For Vite / Vercel / Netlify environment variables)**:
+  Set `VITE_API_URL` in `frontend/.env` or in your hosting provider's dashboard:
+  ```ini
+  VITE_API_URL=https://your-backend-app.onrender.com
+  ```
+
+---
+
 ## 📋 Environment Configuration (`backend/.env`)
 
 Copy `backend/.env.example` to `backend/.env`:
 ```ini
 PORT=3000
 NODE_ENV=production
+CLIENT_URL=http://localhost:5173,https://your-frontend-domain.vercel.app
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/herboindia?retryWrites=true&w=majority
 DB_NAME=herboindia
 ADMIN_EMAIL=herboindia03@gmail.com
