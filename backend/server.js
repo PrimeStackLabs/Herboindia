@@ -297,7 +297,7 @@ async function updateEnquiryStatus(id, newStatus) {
         { returnDocument: 'after' }
       );
       if (res) updated = res;
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const list = readJsonFile(FILES.enquiries);
@@ -317,7 +317,7 @@ async function deleteEnquiryById(id) {
     try {
       const res = await colEnquiries.deleteOne({ id });
       if (res.deletedCount > 0) success = true;
-    } catch (e) {}
+    } catch (e) { }
   }
 
   let list = readJsonFile(FILES.enquiries);
@@ -342,12 +342,12 @@ async function getAdminUserByUsernameOrEmail(identifier) {
   }
 
   // Master Admin identifier hints (ONLY if identifier explicitly references master admin or typo)
-  const isMasterHint = clean === ADMIN_USERNAME.toLowerCase() || 
-                       clean === ADMIN_EMAIL.toLowerCase() || 
-                       clean === 'herbo' || 
-                       clean === 'herboindia' || 
-                       clean === 'herboindia03' || 
-                       clean.includes('herboindia03');
+  const isMasterHint = clean === ADMIN_USERNAME.toLowerCase() ||
+    clean === ADMIN_EMAIL.toLowerCase() ||
+    clean === 'herbo' ||
+    clean === 'herboindia' ||
+    clean === 'herboindia03' ||
+    clean.includes('herboindia03');
 
   if (isMongoConnected) {
     try {
@@ -361,12 +361,12 @@ async function getAdminUserByUsernameOrEmail(identifier) {
       }
       const user = await colAdminUsers.findOne({ $or: orList });
       if (user) return user;
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const users = readJsonFile(FILES.users);
-  let user = users.find(u => 
-    (u.username && u.username.toLowerCase() === clean) || 
+  let user = users.find(u =>
+    (u.username && u.username.toLowerCase() === clean) ||
     (u.email && u.email.toLowerCase() === clean) ||
     (isMasterHint && (u.username.toLowerCase() === ADMIN_USERNAME.toLowerCase() || u.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()))
   );
@@ -379,7 +379,7 @@ async function getAllAdminUsers() {
     try {
       const users = await colAdminUsers.find({}).project({ passwordHash: 0, salt: 0 }).toArray();
       return users.map(({ _id, ...rest }) => rest);
-    } catch (e) {}
+    } catch (e) { }
   }
   const users = readJsonFile(FILES.users);
   return users.map(({ passwordHash, salt, ...rest }) => rest);
@@ -452,7 +452,7 @@ async function deleteSubAdminUser(username) {
     try {
       await colAdminUsers.deleteOne({ username: clean });
       await colAdminSessions.deleteMany({ username: clean });
-    } catch (e) {}
+    } catch (e) { }
   }
 
   let users = readJsonFile(FILES.users);
@@ -478,7 +478,7 @@ async function updateAdminPassword(email, newPassword) {
         { email: cleanEmail },
         { $set: { salt, passwordHash, updatedAt: now } }
       );
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const users = readJsonFile(FILES.users);
@@ -512,7 +512,7 @@ async function createAdminOtp(email) {
   if (isMongoConnected) {
     try {
       await colAdminOtps.insertOne(otpDoc);
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const otps = readJsonFile(FILES.otps);
@@ -540,14 +540,14 @@ async function verifyAndConsumeOtp(email, enteredOtp) {
         await colAdminOtps.updateOne({ _id: match._id }, { $set: { used: true } });
         return true;
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const otps = readJsonFile(FILES.otps);
-  const match = otps.find(o => 
-    o.email === cleanEmail && 
-    o.otpHash === enteredHash && 
-    !o.used && 
+  const match = otps.find(o =>
+    o.email === cleanEmail &&
+    o.otpHash === enteredHash &&
+    !o.used &&
     o.expiresAt > now
   );
 
@@ -581,7 +581,7 @@ async function createAdminSession(user) {
   if (isMongoConnected) {
     try {
       await colAdminSessions.insertOne(sessionDoc);
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const sessions = readJsonFile(FILES.sessions);
@@ -602,7 +602,7 @@ async function validateAdminSession(token) {
         expiresAt: { $gt: now }
       });
       if (sess) return sess;
-    } catch (e) {}
+    } catch (e) { }
   }
 
   const sessions = readJsonFile(FILES.sessions);
@@ -777,11 +777,11 @@ const server = http.createServer(async (req, res) => {
       let isValidPassword = verifyPassword(password, user.salt, user.passwordHash);
 
       // Support master administrator: if registered master admin signs in, detect and grant authentication
-      const isMasterUser = (user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) || 
-                           (user.username && user.username.toLowerCase() === ADMIN_USERNAME.toLowerCase()) || 
-                           user.role === 'admin' ||
-                           identifier.includes('herboindia') ||
-                           identifier.includes('hernoindia');
+      const isMasterUser = (user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) ||
+        (user.username && user.username.toLowerCase() === ADMIN_USERNAME.toLowerCase()) ||
+        user.role === 'admin' ||
+        identifier.includes('herboindia') ||
+        identifier.includes('hernoindia');
 
       if (!isValidPassword && isMasterUser) {
         isValidPassword = true;
@@ -802,7 +802,7 @@ const server = http.createServer(async (req, res) => {
               { $or: [{ email: user.email }, { username: user.username }] },
               { $set: { salt, passwordHash, updatedAt: now } }
             );
-          } catch (e) {}
+          } catch (e) { }
         }
         const users = readJsonFile(FILES.users);
         const u = users.find(x => x.username === user.username || x.email === user.email);
@@ -1201,42 +1201,42 @@ const server = http.createServer(async (req, res) => {
   }
 
   fs.stat(resolvedPath, (err, stats) => {
-    if (err || !stats.isFile()) {
-      if (!path.extname(pathname)) {
-        const indexPath = path.join(PUBLIC_DIR, 'index.html');
-        fs.readFile(indexPath, (err2, content) => {
-          if (!err2) {
-            res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end(content);
-            return;
-          }
-          res.writeHead(404, { 'Content-Type': 'text/plain' });
-          res.end('Page Not Found');
-        });
-        return;
-      }
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
-      res.end('404 Not Found');
+  if (err || !stats.isFile()) {
+    if (!path.extname(pathname)) {
+      const indexPath = path.join(PUBLIC_DIR, 'index.html');
+      fs.readFile(indexPath, (err2, content) => {
+        if (!err2) {
+          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+          res.end(content);
+          return;
+        }
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('Page Not Found');
+      });
       return;
     }
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('404 Not Found');
+    return;
+  }
 
-    const ext = path.extname(resolvedPath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+  const ext = path.extname(resolvedPath).toLowerCase();
+  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-    if (ext === '.svg' || ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp') {
-      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+  if (ext === '.svg' || ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp') {
+    res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+  }
+
+  fs.readFile(resolvedPath, (err2, content) => {
+    if (err2) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Internal Server Error');
+      return;
     }
-
-    fs.readFile(resolvedPath, (err2, content) => {
-      if (err2) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-        return;
-      }
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content);
-    });
+    res.writeHead(200, { 'Content-Type': contentType });
+    res.end(content);
   });
+});
 });
 
 // Start Server and Initialize Database
