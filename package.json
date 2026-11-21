@@ -1,10 +1,14 @@
 {
   "name": "herbo-india",
   "version": "1.0.0",
-  "description": "Herbo India - Premium Ayurvedic Sexual Wellness & Vitality Platform",
-  "main": "server.js",
+  "description": "Herbo India - Fullstack Ayurvedic Sexual Wellness & Vitality Platform",
   "scripts": {
-    "start": "node server.js"
+    "start": "node start_dev.js",
+    "dev": "node start_dev.js",
+    "backend": "cd backend && npm start",
+    "server": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "client": "cd frontend && npm start"
   },
   "dependencies": {
     "cors": "^2.8.5",

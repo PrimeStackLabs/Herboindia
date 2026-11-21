@@ -1,0 +1,17 @@
+{
+  "name": "herbo-india-backend",
+  "version": "1.0.0",
+  "description": "Herbo India - Backend API & MongoDB Engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.9",
+    "express": "^4.19.2",
+    "mongodb": "^7.8.0",
+    "nodemailer": "^10.3.1"
+  }
+}

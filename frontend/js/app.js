@@ -10,6 +10,14 @@ const HERBO_PHONE_INTL = "919920086376";
 let currentLanguage = localStorage.getItem("herbo_lang") || "kn";
 let selectedProblemKey = "prob1";
 
+// Intelligent API base for separate client dev server (localhost:5173), direct monolith (localhost:3000), or file:// execution
+const API_BASE = (typeof window !== 'undefined' && window.__API_BASE__)
+  || (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? (window.location.port === '3000' ? '' : 'http://localhost:3000')
+      : (typeof window !== 'undefined' && window.location.protocol === 'file:')
+        ? 'http://localhost:3000'
+        : '');
+
 const problemNames = {
   prob1: {
     en: "Premature Ejaculation (Early Discharge)",
@@ -422,7 +430,7 @@ function setupAnonymousForm() {
 
     // 2. Server API Persistence
     try {
-      await fetch("/api/enquiries", {
+      await fetch(API_BASE + "/api/enquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newEnquiry)
@@ -559,7 +567,7 @@ function setupOrderModal() {
 
       // Server API dispatch
       try {
-        fetch("/api/orders", {
+        fetch(API_BASE + "/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(orderPayload)

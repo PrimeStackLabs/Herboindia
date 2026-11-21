@@ -2,12 +2,20 @@
 .env
 .env.local
 .env.*.local
+backend/.env
+**/.env
+**/.env.*
 
 # Dependency directories
 node_modules/
+backend/node_modules/
+frontend/node_modules/
+**/node_modules/
 
 # Local database fallbacks & patient PII data
 data/
+backend/data/
+**/data/
 *.log
 
 # Operating System Files
