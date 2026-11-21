@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Herbo India - Secure Doctor & Admin Consultation Portal</title>
-  
+
   <!-- Google Fonts: Plus Jakarta Sans, Outfit, Noto Sans Kannada, Noto Sans Devanagari -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
@@ -37,7 +40,7 @@
 
     body {
       background-color: #f8fafc;
-      background-image: 
+      background-image:
         radial-gradient(circle at 10% 15%, rgba(67, 83, 255, 0.05) 0%, transparent 60%),
         radial-gradient(circle at 90% 85%, rgba(67, 83, 255, 0.04) 0%, transparent 60%);
       color: #1e293b;
@@ -149,20 +152,33 @@
       flex-shrink: 0;
     }
 
+    .admin-logo-link {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1.5px solid rgba(198, 155, 60, 0.55);
+      border-radius: 999px;
+      padding: 4px 14px 4px 10px;
+      box-shadow: 0 2px 8px rgba(180, 135, 38, 0.12);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
     .admin-logo-link:hover {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      opacity: 0.88;
+      background: #ffffff;
+      border-color: rgba(198, 155, 60, 0.9);
+      box-shadow: 0 4px 14px rgba(180, 135, 38, 0.22);
+      transform: translateY(-1px);
     }
 
     .admin-logo-img {
-      height: 40px;
+      height: 38px;
       width: auto;
       max-width: 220px;
       object-fit: contain;
       display: block;
       transform: none;
+      filter: drop-shadow(0 1px 2px rgba(80, 50, 10, 0.22));
       transition: transform 0.2s ease;
     }
 
@@ -241,8 +257,13 @@
     }
 
     @keyframes spinForever {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Action Buttons in Header: Uniform Height, Alignment, and Non-Wrapping */
@@ -425,21 +446,25 @@
     }
 
     .auth-logo-pill {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      padding: 0;
+      background: #ffffff;
+      border: 1.5px solid rgba(198, 155, 60, 0.55);
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(180, 135, 38, 0.14);
+      padding: 6px 20px;
       margin: 0 auto 16px;
     }
 
     .auth-logo {
-      height: 52px;
+      height: 48px;
       width: auto;
       max-width: 260px;
       object-fit: contain;
+      filter: drop-shadow(0 1px 2px rgba(80, 50, 10, 0.22));
+      display: block;
+    }
       display: block;
       transform: none;
     }
@@ -1007,10 +1032,21 @@
       height: 4px;
     }
 
-    .stat-total::before { background: var(--primary-blue); }
-    .stat-new::before { background: #ef4444; }
-    .stat-contacted::before { background: #3b82f6; }
-    .stat-resolved::before { background: #10b981; }
+    .stat-total::before {
+      background: var(--primary-blue);
+    }
+
+    .stat-new::before {
+      background: #ef4444;
+    }
+
+    .stat-contacted::before {
+      background: #3b82f6;
+    }
+
+    .stat-resolved::before {
+      background: #10b981;
+    }
 
     .admin-stat-number {
       font-size: 2.3rem;
@@ -1381,22 +1417,22 @@
       white-space: nowrap;
     }
 
-    .status-New { 
-      background: #fee2e2; 
-      color: #b91c1c; 
-      border: 1px solid #fca5a5; 
+    .status-New {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
     }
-    
-    .status-Contacted { 
-      background: var(--blue-soft); 
-      color: var(--primary-blue); 
-      border: 1px solid rgba(67, 83, 255, 0.3); 
+
+    .status-Contacted {
+      background: var(--blue-soft);
+      color: var(--primary-blue);
+      border: 1px solid rgba(67, 83, 255, 0.3);
     }
-    
-    .status-Resolved { 
-      background: #d1fae5; 
-      color: #047857; 
-      border: 1px solid #6ee7b7; 
+
+    .status-Resolved {
+      background: #d1fae5;
+      color: #047857;
+      border: 1px solid #6ee7b7;
     }
 
     /* Inquiry Key Details Box-Grid */
@@ -1644,8 +1680,15 @@
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .empty-state {
@@ -1670,6 +1713,7 @@
       .portal-badge-pill {
         display: none;
       }
+
       .inquiry-meta-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1680,21 +1724,26 @@
         grid-template-columns: 1fr;
         gap: 24px;
       }
+
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
       }
+
       .control-bar {
         flex-direction: column;
         align-items: stretch;
       }
+
       .control-bar-left {
         width: 100%;
       }
+
       .search-box-wrap {
         min-width: 100%;
         max-width: 100%;
       }
+
       .control-bar-right {
         width: 100%;
         justify-content: space-between;
@@ -1706,24 +1755,28 @@
         padding: 0 16px;
         margin: 20px auto 40px;
       }
+
       .portal-banner {
         padding: 20px;
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
       }
+
       .admin-header-container {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
         padding: 10px 16px;
       }
+
       .admin-brand-group {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
       }
+
       .admin-header-actions {
         display: flex;
         align-items: center;
@@ -1733,63 +1786,78 @@
         flex-wrap: wrap;
         gap: 8px;
       }
+
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
       }
+
       .admin-stat-card {
         padding: 18px 16px;
       }
+
       .admin-stat-number {
         font-size: 1.9rem;
       }
+
       .filter-select {
         flex: 1 1 calc(50% - 6px);
         min-width: 140px;
         font-size: 0.82rem;
       }
+
       .inquiry-card {
         padding: 20px 18px;
         border-radius: 18px;
       }
+
       .inquiry-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
       }
+
       .inquiry-meta-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
         padding: 12px 14px;
       }
+
       .cod-address-box {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
       }
+
       .cod-address-box button {
         align-self: flex-start;
       }
+
       .inquiry-actions {
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
       }
+
       .action-btn-group {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
         width: 100%;
       }
-      .btn-act-wa, .btn-act-call {
+
+      .btn-act-wa,
+      .btn-act-call {
         justify-content: center;
         width: 100%;
         padding: 10px 14px;
       }
+
       .status-segmented-group {
         width: 100%;
         display: flex;
       }
+
       .status-seg-btn {
         flex: 1;
         text-align: center;
@@ -1803,61 +1871,78 @@
         padding: 28px 20px;
         border-radius: 22px;
       }
+
       .auth-input {
-        font-size: 16px; /* Prevents auto-zoom in iOS */
+        font-size: 16px;
+        /* Prevents auto-zoom in iOS */
       }
+
       .stats-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
+
       .admin-stat-card {
         padding: 14px 14px;
       }
+
       .admin-stat-number {
         font-size: 1.6rem;
       }
+
       .admin-stat-label {
         font-size: 0.68rem;
       }
+
       .inquiry-meta-grid {
         grid-template-columns: 1fr;
         gap: 8px;
       }
+
       .filter-select {
         flex: 1 1 100%;
         width: 100%;
       }
+
       .action-btn-group {
         grid-template-columns: 1fr;
         gap: 8px;
       }
+
       .top-bar {
         padding: 6px 12px;
         font-size: 0.78rem;
       }
+
       .top-bar-inner {
         flex-direction: column;
         text-align: center;
         gap: 4px;
       }
+
       .admin-header-container {
         padding: 8px 12px;
       }
+
       .admin-brand-group {
         flex-wrap: wrap;
         gap: 6px;
       }
+
       .admin-logo-img {
         height: 34px;
       }
+
       .auth-doctor-badge {
         width: 100%;
         justify-content: center;
       }
+
       .subadmin-panel-card {
         padding: 18px 14px;
         border-radius: 18px;
       }
+
       .subadmin-form-box {
         padding: 16px 14px;
         border-radius: 14px;
@@ -1865,6 +1950,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Top Helpline & Utility Bar -->
@@ -1877,7 +1963,8 @@
         <a href="tel:9920086376" class="top-bar-phone" title="Call 24/7 Medical Helpline">
           📞 9920086376
         </a>
-        <a href="https://wa.me/919920086376?text=Hello%20Herbo%20India%20Doctor,%20I%20need%20confidential%20consultation" target="_blank" class="top-bar-wa" title="Open Confidential WhatsApp Chat">
+        <a href="https://wa.me/919920086376?text=Hello%20Herbo%20India%20Doctor,%20I%20need%20confidential%20consultation"
+          target="_blank" class="top-bar-wa" title="Open Confidential WhatsApp Chat">
           💬 WhatsApp
         </a>
       </div>
@@ -1897,7 +1984,8 @@
           <img src="assets/logo.png" alt="Herbo India - Natural Wellness" class="admin-logo-img">
         </a>
         <span class="portal-badge-pill">DOCTOR &amp; ADMIN PORTAL</span>
-        <button type="button" class="crm-live-badge-pill" id="crmLivePill" onclick="syncNow()" title="Connected to Live Database. Click to sync immediately.">
+        <button type="button" class="crm-live-badge-pill" id="crmLivePill" onclick="syncNow()"
+          title="Connected to Live Database. Click to sync immediately.">
           <span class="portal-live-dot"></span> LIVE CRM <span id="crmSpinIcon" class="crm-spin-icon">🔄</span>
         </button>
       </div>
@@ -1908,13 +1996,15 @@
           <span id="doctorNameDisplay" class="auth-doctor-name">Chief Medical Admin</span>
           <span id="doctorRoleBadge" class="doc-role-pill badge-role-admin">Master Admin</span>
         </div>
-        <button id="btnToggleSubAdmins" class="btn-subadmin-nav" style="display:none;" onclick="toggleSubAdminSection()" title="Manage Sub-Admin Doctors &amp; Staff">
+        <button id="btnToggleSubAdmins" class="btn-subadmin-nav" style="display:none;" onclick="toggleSubAdminSection()"
+          title="Manage Sub-Admin Doctors &amp; Staff">
           👥 Sub-Admins
         </button>
         <a href="index.html" class="btn-back-store" title="Return to Storefront">
           🌐 Storefront
         </a>
-        <button id="btnAdminLogout" class="btn-admin-logout" style="display:none;" onclick="handleDoctorLogout()" title="Sign Out of Doctor Portal">
+        <button id="btnAdminLogout" class="btn-admin-logout" style="display:none;" onclick="handleDoctorLogout()"
+          title="Sign Out of Doctor Portal">
           🔒 Sign Out
         </button>
       </div>
@@ -1924,7 +2014,7 @@
   <!-- Doctor Authentication Gate Screen -->
   <section id="adminAuthSection" class="auth-wrapper">
     <div class="auth-card">
-      
+
       <!-- Direct Doctor & Admin Login Gate -->
       <div id="loginScreenContainer">
         <div class="auth-card-top">
@@ -1933,7 +2023,8 @@
             <img src="assets/logo.png" alt="Herbo India - Natural Wellness" class="auth-logo">
           </div>
           <h2 class="auth-title">Doctor &amp; Admin Sign In</h2>
-          <p class="auth-sub">Enter your authorized email and password to access patient consultations, CRM records, and orders.</p>
+          <p class="auth-sub">Enter your authorized email and password to access patient consultations, CRM records, and
+            orders.</p>
         </div>
 
         <form id="doctorLoginForm" onsubmit="handleDoctorLogin(event)">
@@ -1943,7 +2034,8 @@
             <label for="adminUsername" class="auth-label">Administrator / Doctor Email or Username *</label>
             <div class="input-with-icon">
               <span class="input-icon">✉️</span>
-              <input type="text" id="adminUsername" class="auth-input" placeholder="" required autocomplete="username" autocorrect="off" autocapitalize="none" spellcheck="false">
+              <input type="text" id="adminUsername" class="auth-input" placeholder="" required autocomplete="username"
+                autocorrect="off" autocapitalize="none" spellcheck="false">
             </div>
           </div>
 
@@ -1951,8 +2043,10 @@
             <label for="adminPassword" class="auth-label">Password *</label>
             <div class="input-with-icon">
               <span class="input-icon">🔑</span>
-              <input type="password" id="adminPassword" class="auth-input" placeholder="" required autocomplete="current-password">
-              <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility('adminPassword')" aria-label="Toggle password view" title="Toggle password visibility">👁️</button>
+              <input type="password" id="adminPassword" class="auth-input" placeholder="" required
+                autocomplete="current-password">
+              <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility('adminPassword')"
+                aria-label="Toggle password view" title="Toggle password visibility">👁️</button>
             </div>
           </div>
 
@@ -1974,10 +2068,12 @@
     <div class="portal-banner">
       <div>
         <h1 class="banner-title">Patient Consultations &amp; Medical Inquiries</h1>
-        <p class="banner-sub">Review incoming anonymous patient cases, initiate confidential WhatsApp doctor replies, and manage 30-day course dispatches.</p>
+        <p class="banner-sub">Review incoming anonymous patient cases, initiate confidential WhatsApp doctor replies,
+          and manage 30-day course dispatches.</p>
       </div>
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-        <button id="btnBannerSubAdmins" class="btn-subadmin-nav" style="display:none;" onclick="toggleSubAdminSection()">
+        <button id="btnBannerSubAdmins" class="btn-subadmin-nav" style="display:none;"
+          onclick="toggleSubAdminSection()">
           👥 Manage Sub-Admins
         </button>
         <button class="btn-export" onclick="exportToCSV()">
@@ -1991,14 +2087,17 @@
       <div class="subadmin-header-row">
         <div>
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
-            <h2 style="font-size:1.4rem; font-weight:800; color:var(--dark-slate); margin:0;">👥 Clinic Sub-Admin &amp; Doctor Management</h2>
+            <h2 style="font-size:1.4rem; font-weight:800; color:var(--dark-slate); margin:0;">👥 Clinic Sub-Admin &amp;
+              Doctor Management</h2>
             <span class="badge-master-only">🔐 MASTER ADMIN CONTROL</span>
           </div>
           <p style="color:#64748b; font-size:0.9rem; margin:0;">
-            Only the Master Administrator (<strong>herboindia03@gmail.com</strong>) has authority to register and manage clinical sub-admin doctor accounts.
+            Only the Master Administrator (<strong>herboindia03@gmail.com</strong>) has authority to register and manage
+            clinical sub-admin doctor accounts.
           </p>
         </div>
-        <button type="button" class="btn-auth-secondary" style="width:auto; padding:8px 16px;" onclick="toggleSubAdminSection()">
+        <button type="button" class="btn-auth-secondary" style="width:auto; padding:8px 16px;"
+          onclick="toggleSubAdminSection()">
           ✕ Close Panel
         </button>
       </div>
@@ -2007,34 +2106,43 @@
         <!-- Left Column: Add Sub-Admin Form -->
         <div class="subadmin-form-box">
           <h3>+ Register New Sub-Admin Doctor</h3>
-          <p class="subadmin-form-sub">Directly issue portal login credentials for verified clinical doctors and staff. Sub-admins have consultation access without administrative revocation privileges.</p>
-          <div id="subadminAlertBox" style="display:none; padding:10px 14px; border-radius:8px; font-size:0.85rem; font-weight:700; margin-bottom:12px;"></div>
+          <p class="subadmin-form-sub">Directly issue portal login credentials for verified clinical doctors and staff.
+            Sub-admins have consultation access without administrative revocation privileges.</p>
+          <div id="subadminAlertBox"
+            style="display:none; padding:10px 14px; border-radius:8px; font-size:0.85rem; font-weight:700; margin-bottom:12px;">
+          </div>
 
           <form id="addSubAdminForm" onsubmit="handleAddSubAdmin(event)">
             <div style="margin-bottom: 12px;">
               <label class="auth-label" style="font-size:0.82rem;">Doctor / Staff Full Name *</label>
-              <input type="text" id="newSubName" class="auth-input" style="padding:10px 14px;" placeholder="E.g. Dr. Ramesh Vaidya" required>
+              <input type="text" id="newSubName" class="auth-input" style="padding:10px 14px;"
+                placeholder="E.g. Dr. Ramesh Vaidya" required>
             </div>
 
             <div style="margin-bottom: 12px;">
               <label class="auth-label" style="font-size:0.82rem;">Official Doctor Email *</label>
-              <input type="email" id="newSubEmail" class="auth-input" style="padding:10px 14px;" placeholder="dr.ramesh@clinic.com" required>
+              <input type="email" id="newSubEmail" class="auth-input" style="padding:10px 14px;"
+                placeholder="dr.ramesh@clinic.com" required>
             </div>
 
             <div style="margin-bottom: 12px;">
               <label class="auth-label" style="font-size:0.82rem;">Portal Username *</label>
-              <input type="text" id="newSubUsername" class="auth-input" style="padding:10px 14px;" placeholder="dr_ramesh" required pattern="[a-zA-Z0-9_.-]{3,30}">
+              <input type="text" id="newSubUsername" class="auth-input" style="padding:10px 14px;"
+                placeholder="dr_ramesh" required pattern="[a-zA-Z0-9_.-]{3,30}">
             </div>
 
             <div style="margin-bottom: 16px;">
               <label class="auth-label" style="font-size:0.82rem;">Initial Password (Min 8 Chars) *</label>
               <div class="input-with-icon">
-                <input type="password" id="newSubPassword" class="auth-input" style="padding:10px 40px 10px 14px;" placeholder="Temporary secure password" minlength="8" required>
-                <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility('newSubPassword')" aria-label="Toggle password view" title="Toggle password visibility">👁️</button>
+                <input type="password" id="newSubPassword" class="auth-input" style="padding:10px 40px 10px 14px;"
+                  placeholder="Temporary secure password" minlength="8" required>
+                <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility('newSubPassword')"
+                  aria-label="Toggle password view" title="Toggle password visibility">👁️</button>
               </div>
             </div>
 
-            <button type="submit" id="btnAddSubSubmit" class="btn-auth-submit" style="font-size:0.92rem; padding:11px 18px;">
+            <button type="submit" id="btnAddSubSubmit" class="btn-auth-submit"
+              style="font-size:0.92rem; padding:11px 18px;">
               <span>+ Create Sub-Admin Account</span>
             </button>
           </form>
@@ -2043,8 +2151,10 @@
         <!-- Right Column: Sub-Admin Team Table -->
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 style="font-size:1.15rem; font-weight:800; color:var(--dark-slate); margin:0;">Active Clinical Administrators</h3>
-            <button type="button" class="btn-auth-link" onclick="loadSubAdminsList()" style="font-size:0.82rem;">🔄 Refresh</button>
+            <h3 style="font-size:1.15rem; font-weight:800; color:var(--dark-slate); margin:0;">Active Clinical
+              Administrators</h3>
+            <button type="button" class="btn-auth-link" onclick="loadSubAdminsList()" style="font-size:0.82rem;">🔄
+              Refresh</button>
           </div>
 
           <div class="subadmin-table-wrap">
@@ -2113,8 +2223,10 @@
     <div class="control-bar">
       <div class="control-bar-left">
         <div class="search-box-wrap">
-          <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search Ticket ID, Name, Phone, Address, Symptoms..." oninput="handleSearchInput(event)">
-          <button type="button" id="searchClearBtn" class="search-clear-btn" onclick="clearSearchInput()" title="Clear search">✕</button>
+          <input type="text" id="searchInput" class="search-input"
+            placeholder="🔍 Search Ticket ID, Name, Phone, Address, Symptoms..." oninput="handleSearchInput(event)">
+          <button type="button" id="searchClearBtn" class="search-clear-btn" onclick="clearSearchInput()"
+            title="Clear search">✕</button>
         </div>
 
         <select id="typeFilter" class="filter-select" onchange="filterInquiries()">
@@ -2145,7 +2257,8 @@
           <span class="sync-dot"></span>
           <span id="syncStatusText">Auto-Sync Active</span>
         </div>
-        <button type="button" class="btn-sync-now" onclick="syncNow()" title="Fetch newest customer inquiries immediately">
+        <button type="button" class="btn-sync-now" onclick="syncNow()"
+          title="Fetch newest customer inquiries immediately">
           🔄 Sync Now
         </button>
       </div>
@@ -2163,4 +2276,5 @@
   <script src="config.js"></script>
   <script src="js/admin.js"></script>
 </body>
+
 </html>

@@ -1232,42 +1232,42 @@ const server = http.createServer(async (req, res) => {
   }
 
   fs.stat(resolvedPath, (err, stats) => {
-  if (err || !stats.isFile()) {
-    if (!path.extname(pathname)) {
-      const indexPath = path.join(PUBLIC_DIR, 'index.html');
-      fs.readFile(indexPath, (err2, content) => {
-        if (!err2) {
-          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-          res.end(content);
-          return;
-        }
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Page Not Found');
-      });
+    if (err || !stats.isFile()) {
+      if (!path.extname(pathname)) {
+        const indexPath = path.join(PUBLIC_DIR, 'index.html');
+        fs.readFile(indexPath, (err2, content) => {
+          if (!err2) {
+            res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+            res.end(content);
+            return;
+          }
+          res.writeHead(404, { 'Content-Type': 'text/plain' });
+          res.end('Page Not Found');
+        });
+        return;
+      }
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('404 Not Found');
       return;
     }
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('404 Not Found');
-    return;
-  }
 
-  const ext = path.extname(resolvedPath).toLowerCase();
-  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const ext = path.extname(resolvedPath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-  if (ext === '.svg' || ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp') {
-    res.setHeader('Cache-Control', 'no-cache, must-revalidate');
-  }
-
-  fs.readFile(resolvedPath, (err2, content) => {
-    if (err2) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
-      res.end('Internal Server Error');
-      return;
+    if (ext === '.svg' || ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp') {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
     }
-    res.writeHead(200, { 'Content-Type': contentType });
-    res.end(content);
+
+    fs.readFile(resolvedPath, (err2, content) => {
+      if (err2) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Internal Server Error');
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(content);
+    });
   });
-});
 });
 
 // Start Server and Initialize Database
