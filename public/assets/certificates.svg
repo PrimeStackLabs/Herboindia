@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 90" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldSeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ISO Badge -->
+  <g transform="translate(30, 10)">
+    <circle cx="35" cy="35" r="32" fill="#FFFFFF" stroke="#059669" stroke-width="2.5"/>
+    <circle cx="35" cy="35" r="28" fill="#F0FDF4"/>
+    <text x="35" y="32" font-family="'Inter', sans-serif" font-size="12" font-weight="900" fill="#065F46" text-anchor="middle">ISO</text>
+    <text x="35" y="46" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" fill="#047857" text-anchor="middle">9001:2015</text>
+    <text x="35" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">Certified Lab</text>
+  </g>
+
+  <!-- GMP Badge -->
+  <g transform="translate(170, 10)">
+    <circle cx="35" cy="35" r="32" fill="#FFFFFF" stroke="url(#goldSeal)" stroke-width="2.5"/>
+    <circle cx="35" cy="35" r="28" fill="#FFFBEB"/>
+    <text x="35" y="32" font-family="'Inter', sans-serif" font-size="12" font-weight="900" fill="#B45309" text-anchor="middle">GMP</text>
+    <text x="35" y="46" font-family="'Inter', sans-serif" font-size="8.5" font-weight="800" fill="#92400E" text-anchor="middle">CERTIFIED</text>
+    <text x="35" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">Good Practices</text>
+  </g>
+
+  <!-- 100% AYUSH HERBAL -->
+  <g transform="translate(310, 10)">
+    <circle cx="35" cy="35" r="32" fill="#FFFFFF" stroke="#059669" stroke-width="2.5"/>
+    <circle cx="35" cy="35" r="28" fill="#ECFDF5"/>
+    <path d="M35 18 C26 26 24 36 29 42 C32 46 35 47 35 47 C35 47 38 46 41 42 C46 36 44 26 35 18 Z" fill="#059669"/>
+    <text x="35" y="52" font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" fill="#047857" text-anchor="middle">100% PURE</text>
+    <text x="35" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">Herbal Standard</text>
+  </g>
+
+  <!-- DISCREET PACKAGING -->
+  <g transform="translate(450, 10)">
+    <circle cx="35" cy="35" r="32" fill="#FFFFFF" stroke="#475569" stroke-width="2.5"/>
+    <circle cx="35" cy="35" r="28" fill="#F8FAFC"/>
+    <!-- Lock & Box Icon -->
+    <rect x="25" y="30" width="20" height="15" rx="3" fill="#0F172A"/>
+    <path d="M29 30 L29 24 C29 20 41 20 41 24 L41 30" fill="none" stroke="#0F172A" stroke-width="2.5"/>
+    <circle cx="35" cy="37" r="1.5" fill="#FFFFFF"/>
+    <text x="35" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">100% Confidential</text>
+  </g>
+
+  <!-- ZERO SIDE EFFECTS -->
+  <g transform="translate(590, 10)">
+    <circle cx="35" cy="35" r="32" fill="#FFFFFF" stroke="#059669" stroke-width="2.5"/>
+    <circle cx="35" cy="35" r="28" fill="#ECFDF5"/>
+    <text x="35" y="32" font-family="'Inter', sans-serif" font-size="13" font-weight="900" fill="#047857" text-anchor="middle">0%</text>
+    <text x="35" y="45" font-family="'Inter', sans-serif" font-size="7" font-weight="800" fill="#059669" text-anchor="middle">SIDE EFFECTS</text>
+    <text x="35" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">Safe for Daily Use</text>
+  </g>
+</svg>

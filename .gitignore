@@ -1,0 +1,22 @@
+# Environment & Secret Variables
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+
+# Local database fallbacks & patient PII data
+data/
+*.log
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch / Temp files
+scratch/
+test_*.js
+*.tmp
+*.tmp.*

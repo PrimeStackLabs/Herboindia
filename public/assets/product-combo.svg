@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Glow (Soft Periwinkle Medical Ambience) -->
+    <radialGradient id="stageGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#edf1fd" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#f4f7fe" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="goldCap" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="30%" stop-color="#f59e0b"/>
+      <stop offset="70%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+
+    <!-- Modern Royal Navy Bottle Gradient -->
+    <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="25%" stop-color="#1e293b"/>
+      <stop offset="55%" stop-color="#2a3b7a"/>
+      <stop offset="85%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0a0f1d"/>
+    </linearGradient>
+
+    <!-- Royal Medical Blue Accent -->
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4353ff"/>
+      <stop offset="100%" stop-color="#2a38cb"/>
+    </linearGradient>
+
+    <!-- Cream Tube Gradient -->
+    <linearGradient id="tubeGrad" x1="0%" y1="0%" x2="100%" y2="30%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="35%" stop-color="#0f172a"/>
+      <stop offset="70%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow3D" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.22"/>
+    </filter>
+    <filter id="badgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- Stage Glow & Ground Shadow -->
+  <ellipse cx="300" cy="240" rx="270" ry="180" fill="url(#stageGlow)"/>
+  <ellipse cx="230" cy="385" rx="140" ry="22" fill="#0f172a" opacity="0.14" filter="blur(8px)"/>
+  <ellipse cx="395" cy="390" rx="90" ry="18" fill="#0f172a" opacity="0.13" filter="blur(6px)"/>
+
+  <!-- ==================== PILLS BOTTLE (LEFT) ==================== -->
+  <g transform="translate(140, 68)" filter="url(#shadow3D)">
+    <!-- Bottle Neck -->
+    <rect x="52" y="38" width="76" height="30" rx="4" fill="url(#bottleGrad)"/>
+    
+    <!-- Bottle Gold Cap -->
+    <rect x="44" y="8" width="92" height="34" rx="6" fill="url(#goldCap)"/>
+    <!-- Ribbed texture on cap -->
+    <line x1="55" y1="12" x2="55" y2="38" stroke="#78350f" stroke-width="1.5" opacity="0.5"/>
+    <line x1="68" y1="12" x2="68" y2="38" stroke="#78350f" stroke-width="1.5" opacity="0.5"/>
+    <line x1="81" y1="12" x2="81" y2="38" stroke="#78350f" stroke-width="1.5" opacity="0.5"/>
+    <line x1="94" y1="12" x2="94" y2="38" stroke="#78350f" stroke-width="1.5" opacity="0.5"/>
+    <line x1="107" y1="12" x2="107" y2="38" stroke="#78350f" stroke-width="1.5" opacity="0.5"/>
+    <line x1="120" y1="12" x2="120" y2="38" stroke="#78350f" stroke-width="1.5" opacity="0.5"/>
+    
+    <!-- Bottle Shoulder & Main Body -->
+    <path d="M52 64 C20 68 8 95 8 130 L8 290 C8 305 20 315 35 315 L145 315 C160 315 172 305 172 290 L172 130 C172 95 160 68 128 64 Z" 
+          fill="url(#bottleGrad)"/>
+    
+    <!-- Bottle Glass Reflection Highlight -->
+    <path d="M18 135 L18 290 C18 298 24 305 32 305 L38 305 C28 305 24 298 24 290 L24 135 Q24 115 45 88 Q30 98 18 135 Z" 
+          fill="#ffffff" opacity="0.22"/>
+
+    <!-- Premium Product Label -->
+    <rect x="20" y="105" width="140" height="185" rx="8" fill="#0b132b" stroke="url(#goldCap)" stroke-width="2"/>
+    
+    <!-- Label Inner Gold Border -->
+    <rect x="24" y="109" width="132" height="177" rx="6" fill="none" stroke="rgba(245, 158, 11, 0.45)" stroke-width="1" stroke-dasharray="3 2"/>
+
+    <!-- Medical Emblem on Label -->
+    <circle cx="90" cy="142" r="18" fill="#1e293b" stroke="url(#goldCap)" stroke-width="1.5"/>
+    <path d="M90 129 C82 138 80 148 85 153 C88 156 90 157 90 157 C90 157 92 156 95 153 C100 148 98 138 90 129 Z" fill="#4353ff"/>
+    
+    <text x="90" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1">HERBO INDIA</text>
+    <text x="90" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-size="13.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">POWER PILLS</text>
+    
+    <rect x="35" y="196" width="110" height="1.5" fill="url(#goldCap)"/>
+    
+    <text x="90" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#60a5fa" text-anchor="middle">PURE SHILAJIT &amp; ASHWAGANDHA</text>
+    <text x="90" y="223" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#cbd5e1" text-anchor="middle">Hardness • Timing • Size • Stamina</text>
+    <text x="90" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="500" fill="#94a3b8" text-anchor="middle">30 Days Guaranteed Course</text>
+    
+    <!-- Badge at bottom of bottle label -->
+    <rect x="38" y="246" width="104" height="20" rx="10" fill="url(#goldCap)"/>
+    <text x="90" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="900" fill="#0f172a" text-anchor="middle">100% AYURVEDIC</text>
+    <text x="90" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#94a3b8" text-anchor="middle">60 CAPSULES • ZERO SIDE EFFECTS</text>
+  </g>
+
+  <!-- ==================== TUBE CREAM / OIL (RIGHT) ==================== -->
+  <g transform="translate(325, 118)" filter="url(#shadow3D)">
+    <!-- Tube Body -->
+    <path d="M35 15 L105 15 C108 15 110 18 110 22 L98 200 C96 215 88 225 70 225 C52 225 44 215 42 200 L30 22 C30 18 32 15 35 15 Z" 
+          fill="url(#tubeGrad)"/>
+    
+    <!-- Tube Crimp Top with Gold Band -->
+    <rect x="30" y="10" width="80" height="12" rx="2" fill="url(#goldCap)"/>
+    <line x1="30" y1="16" x2="110" y2="16" stroke="#78350f" stroke-width="1"/>
+
+    <!-- Tube Cap at bottom (Flip top stand) -->
+    <rect x="52" y="222" width="36" height="35" rx="4" fill="url(#goldCap)"/>
+    <rect x="46" y="254" width="48" height="12" rx="3" fill="#b45309"/>
+
+    <!-- Tube Highlights & Details -->
+    <path d="M36 25 L45 195 Q47 210 58 215" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.15" fill="none"/>
+    
+    <!-- Tube Label Artwork -->
+    <circle cx="70" cy="65" r="16" fill="#1e293b" stroke="url(#goldCap)" stroke-width="1.5"/>
+    <path d="M70 54 L74 63 L83 63 L76 69 L78 78 L70 73 L62 78 L64 69 L57 63 L66 63 Z" fill="url(#goldCap)"/>
+
+    <text x="70" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#fef08a" text-anchor="middle">HERBO INDIA</text>
+    <text x="70" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">VIGOR CREAM</text>
+    <text x="70" y="125" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#fbbf24" text-anchor="middle">&amp; MASSAGE OIL</text>
+
+    <line x1="42" y1="133" x2="98" y2="133" stroke="url(#goldCap)" stroke-width="1"/>
+
+    <text x="70" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#e2e8f0" text-anchor="middle">PENILE TISSUE HEALING</text>
+    <text x="70" y="157" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="500" fill="#94a3b8" text-anchor="middle">Size • Girth • Vein Strength</text>
+    <text x="70" y="168" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="500" fill="#94a3b8" text-anchor="middle">Nerve Repair from Masturbation</text>
+
+    <!-- Badge on tube -->
+    <rect x="42" y="177" width="56" height="15" rx="7.5" fill="url(#blueAccent)"/>
+    <text x="70" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">FAST ABSORB</text>
+  </g>
+
+  <!-- ==================== AYURVEDIC HERBS DECOR (SHILAJIT / ROOTS) ==================== -->
+  <g transform="translate(60, 290)">
+    <!-- Natural Stone Mortar / Shilajit Bowl -->
+    <ellipse cx="60" cy="70" rx="45" ry="20" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <ellipse cx="60" cy="65" rx="40" ry="14" fill="#0f172a"/>
+    <!-- Pure Black Shilajit Resin -->
+    <ellipse cx="60" cy="65" rx="34" ry="10" fill="#000000"/>
+    <circle cx="56" cy="63" r="1.5" fill="#ffffff" opacity="0.5"/>
+    <path d="M20 70 Q60 115 100 70 Z" fill="#1e293b"/>
+    <text x="60" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#4353ff" text-anchor="middle">Pure Shilajit &amp; Herbs</text>
+  </g>
+
+  <!-- Floating 30-Day Guarantee Trust Badge -->
+  <g transform="translate(425, 38)" filter="url(#badgeShadow)">
+    <circle cx="55" cy="55" r="48" fill="url(#goldCap)"/>
+    <circle cx="55" cy="55" r="42" fill="#0f172a" stroke="#fef08a" stroke-width="2"/>
+    <text x="55" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="900" fill="#fef08a" text-anchor="middle">30 DAYS</text>
+    <text x="55" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">PERMANENT</text>
+    <text x="55" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#93c5fd" text-anchor="middle">RESULTS</text>
+    <!-- Stars -->
+    <text x="55" y="82" font-size="8" fill="#f59e0b" text-anchor="middle">★★★★★</text>
+  </g>
+
+  <!-- Dual Action Banner Pill (Bottom Center - Guaranteed Spacious Width & Perfectly Centered) -->
+  <g transform="translate(85, 396)" filter="url(#badgeShadow)">
+    <rect x="0" y="0" width="430" height="38" rx="19" fill="#0f172a" stroke="url(#goldCap)" stroke-width="2"/>
+    <text x="215" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">
+      ⚡ DUAL ACTION: POWER PILLS + VIGOR CREAM
+    </text>
+  </g>
+</svg>
